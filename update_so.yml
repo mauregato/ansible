@@ -1,0 +1,22 @@
+---
+- hosts: all
+  user: unixadm
+  become: true
+  become_user: root
+  
+  tasks:
+    - name: "Update SO RedHat"
+      when: ansible_facts['os_family'] == "RedHat"
+      yum: 
+        name: '*' 
+        state: latest
+    - name: "Update SO Debian"
+      when: ansible_facts['os_family'] == "Debian"
+      apt:
+        name: '*'
+        state: latest
+    - name: "Reboot Server after upgrade SO" 
+      reboot:
+        msg: "Server rebooted by Admin"
+        post_reboot_delay: 30
+        test_command: uptime

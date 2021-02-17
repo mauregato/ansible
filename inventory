@@ -1,7 +1,3 @@
-[webservers]
-web01
-web02
-
-[databases]
-db01
-db02
+[server]
+node1
+node2

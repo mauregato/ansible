@@ -1,0 +1,29 @@
+---
+- hosts: all
+  user: unixadm
+  become: true
+  become_user: root
+
+  tasks:
+    - name: Add group "nixadmins" to remote server
+      group:
+        name: nixadmins
+        gid: 2010
+        state: present
+
+    - name: Add user "sysadmin" to remote server
+      user:
+        name: sysadmin
+        comment: "Privileged User"
+        uid: 2001
+        group: nixadmins
+        append: yes
+        shell: /bin/bash
+
+    - name: Add user "David" to remote server
+      user:
+        name: david
+        comment: "Accountant UnPrivileged User"
+        uid: 2002
+        group: nixadmins
+        shell: /bin/bash
