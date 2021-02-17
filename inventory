@@ -1,3 +1,7 @@
-[server]
-node1
-node2
+[webservers]
+web01
+web02
+[dbservers]
+db01
+db02
+
