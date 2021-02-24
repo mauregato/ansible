@@ -1,7 +1,6 @@
 [webservers]
 web01
 web02
-[dbservers]
+[databases]
 db01
 db02
-

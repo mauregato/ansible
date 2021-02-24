@@ -1,0 +1,10 @@
+---
+  - name: Copy file
+    template:
+      src: test.file.j2
+      dest: /tmp/fest.file.txt
+      owner: root
+      group: root
+      mode: "0600"
+      setype: etc_t
+
