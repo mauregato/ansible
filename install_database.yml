@@ -1,0 +1,29 @@
+---
+  - name: Install DB Server
+    hosts: databases
+    become: yes
+    user: demo
+    become_user: root
+    tasks:
+      - name: "Install DB Server on RedHat"
+        when: ansible_facts['os_family'] == "RedHat"
+        yum:
+          name: postgresql-server
+          state: latest
+      - name: ensure postgresql is running
+        when: ansible_facts['os_family'] == "RedHat"
+        service:
+          name: postgresql
+          state: started
+     
+      - name: "Install DB Server on Debian"
+        when: ansible_facts['os_family'] == "Debian"
+        apt:
+          name: postgresql
+          state: latest
+      - name: Ensure postgresql running
+        when: ansible_facts['os_family'] == "Debian"
+        service:
+          name: postgresql
+          state: started
+          

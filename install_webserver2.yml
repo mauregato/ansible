@@ -1,7 +1,7 @@
 ---
   - name: Install Web Server
-    hosts: all
-    user: unixadm
+    hosts: webservers
+    user: demo
     become: yes
     become_user: root
     tasks:
