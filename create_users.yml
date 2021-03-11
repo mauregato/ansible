@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  user: unixadm
+  user: demo
   become: true
   become_user: root
 
@@ -10,8 +10,9 @@
         name: nixadmins
         gid: 2010
         state: present
+      register: out
 
-    - name: Add user "sysadmin" to remote server
+    - name: Add user "sysadmin1" to remote server
       user:
         name: sysadmin
         comment: "Privileged User"
@@ -19,11 +20,16 @@
         group: nixadmins
         append: yes
         shell: /bin/bash
+      register: out
 
-    - name: Add user "David" to remote server
+    - name: Add user "sysadmin2" to remote server
       user:
         name: david
         comment: "Accountant UnPrivileged User"
         uid: 2002
         group: nixadmins
         shell: /bin/bash
+      register: out
+     
+    - debug: 
+        var: out.stdout_lines

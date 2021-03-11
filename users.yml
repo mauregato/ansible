@@ -1,0 +1,22 @@
+---
+- name: New user is created
+  hosts: allhost
+  become: true
+
+  tasks:
+    - name:
+      user:
+        name: "{{ item }}"
+          #state: absent
+        state: absent
+      loop: "{{ all_users }}"
+      register: out
+
+    - debug:
+        var: item.stdout_lines
+      loop: "{{ out.results }}"
+        #- debug: 
+      #  msg: "{{ out.stdout }}"
+      #loop: "{{ out.stdout }}"
+      # var: "{{ out.stdout }}"
+

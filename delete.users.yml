@@ -1,0 +1,25 @@
+---
+- hosts: all
+  user: demo
+  become: true
+  become_user: root
+
+  tasks:
+    - name: Delete user "sysadmin1" to remote server
+      user: 
+        name: sysadmin
+        state: absent
+      register: out
+
+    - name: Delete user "sysadmin2" to remote server
+      user: 
+        name: sysadmin2
+        state: absent
+      register: out
+
+    - name: Get Local users
+      command: '"getent passwd |tail -10"'
+      register: out
+     
+    - debug: 
+        var: out.stdout_lines

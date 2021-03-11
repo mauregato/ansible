@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: "Uptime Server"
+      command: uptime
+      register: dbuptime
+
+    - debug: var=dbuptime.stdout_lines
+
+
+

@@ -4,3 +4,10 @@ web02
 [databases]
 db01
 db02
+[allhost]
+ansible
+web01
+web02
+db01
+db02
+

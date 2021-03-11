@@ -1,0 +1,4 @@
+- hosts: all
+  roles:
+    - deluxebrain.ansible_role_sysinfo
+

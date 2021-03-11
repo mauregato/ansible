@@ -1,24 +1,27 @@
 ---
 - hosts: all
   become: true
-  user: unixadm
+  user: demo
   become_user: root
   
-  - tasks:
-    name: "PAM Setting for RedHat"
-    when: ansible_facts['os_family'] == "RedHat"
-    pamd:
-      name: system-auth
-      type: auth
-      control: required
-      module_path: pam_tally2.so
-      module_arguments: '
-        onerr=fail
-        deny=5 
-        lock_time=1800 
-        unlock_time=1800 
-        even_deny_root 
-        root_unlock_time=1800
-        '
+  tasks:
+   -  name: "PAM Setting for RedHat"
+      when: ansible_facts['os_family'] == "RedHat"
+      pamd:
+        name: system-auth
+        type: auth
+        control: required
+        module_path: pam_tally2.so
+        module_arguments: '
+          onerr=fail
+          deny=5 
+          lock_time=1800 
+          unlock_time=1800 
+          even_deny_root 
+          root_unlock_time=1800
+          '
+      register: dpam
+   - debug: var=dpam.stdout_lines
+        #- debug: var=dpam.stdout_lines
         #- name: "Update SO Debian"
         # when: ansible_facts['os_family'] == "Debian"

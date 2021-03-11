@@ -1,0 +1,41 @@
+---
+# ansible_architecture: "x86_64"
+# ansible_system: "Linux"
+# ansible_os_family: "Debian"
+# ansible_distribution: "Ubuntu"
+# ansible_distribution_release: "disco"
+# ansible_distribution_version: "19.04"
+# ansible_distribution_major_version: "19"
+# ansible_python_version: "3.7.3"
+
+- name: ansible_architecture
+  debug:
+    var: ansible_architecture
+
+- name: ansible_system
+  debug:
+    var: ansible_system
+
+- name: ansible_os_family
+  debug:
+    var: ansible_os_family
+
+- name: ansible_distribution
+  debug:
+    var: ansible_distribution
+
+- name: ansible_distribution_release
+  debug:
+    var: ansible_distribution_release
+
+- name: ansible_distribution_version
+  debug:
+    var: ansible_distribution_version
+
+- name: ansible_distribution_major_version
+  debug:
+    var: ansible_distribution_major_version
+
+- name: ansible_python_version
+  debug:
+    var: ansible_python_version
